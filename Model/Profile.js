@@ -71,12 +71,12 @@ userSchema.methods.generateAuthToken = async function () {
 
     console.log("token");
 
-    const Profile = this
-    const token = jwt.sign({ _id: Profile._id.toString() }, 'tokens')
+    const user = this
+    const token = jwt.sign({ _id: user._id.toString() }, 'tokens')
 
     console.log(token);
-    Profile.tokens = Profile.tokens.concat({ token: token })
-    await Profile.save()
+    user.tokens = user.tokens.concat({ token: token })
+    await user.save()
     return token
 }
 

@@ -3,7 +3,7 @@ const Profile = require('../Model/Profile')
 const auth = async (req, res, next) => {
     try {
         const token = req.header('Authorization').replace('Bearer ', '')
-        const decoded = jwt.verify(token, 'tokens')
+        const decoded = jwt.verify(token, 'thisismynewcourse')
         const user = await Profile.findOne({
             _id: decoded._id, 'tokens.token': token
         })

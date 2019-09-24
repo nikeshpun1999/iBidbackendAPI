@@ -44,22 +44,22 @@ router.post("/login", async function (req, res) {
     console.log(enteredUname, enteredpass);
     const user = await Profile.checkCredentialsDb(enteredUname, enteredpass);
     if (user) {
-        const token = await Profile.generateAuthToken();
+        const token = await user.generateAuthToken();
         res.status(201).json({
             token: token,
-            user: Profile,
-            Fname: Profile.firstname,
-            Mname: Profile.middlename,
-            Lname: Profile.lastname,
+            // user: Profile,
+            // Fname: Profile.firstname,
+            // Mname: Profile.middlename,
+            // Lname: Profile.lastname,
             Username: Profile.username,
-            Password: Profile.password,
-            Aboutme: Profile.about,
-            Contact: Profile.Contact,
-            DOB: Profile.dob,
-            Gender: Profile.gender,
-            Badges: Profile.badges,
-            Email: Profile.email,
-            Profilepic: Profile.profilepic
+            // Password: Profile.password,
+            // Aboutme: Profile.about,
+            // Contact: Profile.Contact,
+            // DOB: Profile.dob,
+            // Gender: Profile.gender,
+            // Badges: Profile.badges,
+            // Email: Profile.email,
+            // Profilepic: Profile.profilepic
 
         });
     }
