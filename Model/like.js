@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
 
-const auctionSchema = mongoose.Schema({
+const likeSchema = mongoose.Schema({
 
-    auctionID: {
+    auctionId: {
         type: String
     },
     userId: {
@@ -11,10 +11,10 @@ const auctionSchema = mongoose.Schema({
     },
 
     like: {
-        type: number
+        type: Number
     }
 
 });
 
-const Comment = mongoose.model("Comment", auctionSchema);
-module.exports = Comment;
+const liked = mongoose.model("like", likeSchema);
+module.exports = liked;

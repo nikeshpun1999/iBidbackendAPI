@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 
-const auctionSchema = mongoose.Schema({
+const commentSchema = mongoose.Schema({
 
     auctionID: {
         type: String
@@ -16,5 +16,5 @@ const auctionSchema = mongoose.Schema({
 
 });
 
-const Comment = mongoose.model("Comment", auctionSchema);
-module.exports = Comment;
+const Commented = mongoose.model("Comment", commentSchema);
+module.exports = Commented;

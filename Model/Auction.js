@@ -5,7 +5,7 @@ const auctionSchema = mongoose.Schema({
     title: {
         type: String
     },
-    shippingcost: {
+    shippingCost: {
         type: String
     },
     sellerName: {
@@ -15,7 +15,7 @@ const auctionSchema = mongoose.Schema({
         type: String
     },
     year: {
-        type: Number
+        type: String
     },
     condition: {
         type: String
@@ -34,7 +34,7 @@ const auctionSchema = mongoose.Schema({
     deliveryDate: {
         type: Date
     },
-    auctionImage: {
+    auctionImgName: {
         type: String
     },
     auctionLock: {

@@ -7,13 +7,12 @@ const Auth = require('../Middleware/auth');
 const path = require("path");
 
 const multer = require("multer");
-var ImageNamee = '';
-
-var auctionimage = multer.diskStorage({
+// var ImageNamee = '';
+var storage = multer.diskStorage({
     destination: "images",
     filename: (req, file, callback) => {
         let ext = path.extname(file.originalname);
-        callback(null, "auction" + Date.now() + ext);
+        callback(null, "auctions" + Date.now() + ext);
     }
 });
 
@@ -24,6 +23,14 @@ var imageFileFilter = (req, file, cb) => {
     cb(null, true);
 };
 
+var upload = multer({ storage: storage, fileFilter: imageFileFilter, limits: { fileSize: 1000000 } });
+
+router.post('/uploadimg', upload.single('upload'), (req, res) => {
+    // res.json({ Filename: req.file.filename });
+    res.json(req.file.filename);
+    console.log(req.file.filename)
+})
+
 router.post("/registerauction", (req, res) => {
 
     currenttime = Date();
@@ -31,16 +38,16 @@ router.post("/registerauction", (req, res) => {
     const auction = new Auction({
 
         title: req.body.title,
-        shippingCost: req.body.shipping,
-        sellerName: req.body.sellername,
+        shippingCost: req.body.shippingCost,
+        // sellerName: req.body.sellername,
         country: req.body.country,
         year: req.body.year,
         type: req.body.type,
         condition: req.body.condition,
-        auctionissuetime: req.body.auctionissuetime,
-        auctionendtime: req.body.auctionendtime,
-        deliverdate: currenttime,
-        auctionImage: auctionimage
+        // auctionissuetime: req.body.auctionissuetime,
+        // auctionendtime: req.body.auctionendtime,
+        // deliverdate: currenttime,
+        auctionImgname: storage
     })
     auction.save()
         .then(result => {
@@ -69,6 +76,10 @@ router.get("/latest", function (req, res) {
             res.send(e);
         })
 })
+
+
+
+
 
 
 

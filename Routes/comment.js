@@ -9,9 +9,9 @@ router.post("/comment", (req, res) => {
 
     const auction = new Like({
 
-        recipeId=req.body.recipeid,
-        userId=req.body.userid,
-        comment=req.body.comment
+        recipeId: req.body.recipeid,
+        userId: req.body.userid,
+        comment: req.body.comment
 
     })
     auction.save()
